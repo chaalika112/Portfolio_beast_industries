@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dedeepya Chaalika Chukka | Data Scientist, Experimentation and Product Analytics</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#f6f8fc;--surface:#fff;--ink:#0d1b3d;--mute:#53607f;--line:#d9e0ee;--blue:#1456f0;--blue-ink:#fff;--sun:#ffc700;--good:#0a7d4f;--bad:#c4321f;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#081028;--surface:#101b3b;--ink:#eef2ff;--mute:#9aa8cc;--line:#25335c;--blue:#5b8cff;--blue-ink:#081028;--good:#4fd69c;--bad:#ff8b7a}}
+:root[data-theme="dark"]{--bg:#081028;--surface:#101b3b;--ink:#eef2ff;--mute:#9aa8cc;--line:#25335c;--blue:#5b8cff;--blue-ink:#081028;--good:#4fd69c;--bad:#ff8b7a}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;line-height:1.08;margin:0;letter-spacing:-.02em}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--line);z-index:5}
+nav .wrap{display:flex;gap:20px;align-items:center;overflow-x:auto;padding-top:12px;padding-bottom:12px;white-space:nowrap;font-size:15px}
+nav b{font-family:"Bricolage Grotesque",sans-serif;font-size:18px;margin-right:auto}
+nav a{color:var(--mute);text-decoration:none}nav a:hover{color:var(--ink)}
+.hero{padding:56px 0 40px}
+.hero h1{font-size:clamp(38px,6.4vw,76px);font-weight:800;max-width:15ch}
+.hero p.lead{font-size:clamp(18px,2vw,21px);color:var(--mute);max-width:56ch;margin:20px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:6px 14px;font-size:14px}
+.lab{display:grid;grid-template-columns:1.05fr 1fr;gap:0;margin-top:40px;border:2px solid var(--ink);border-radius:18px;background:var(--surface);overflow:hidden}
+.lab>div{padding:26px}
+.lab h2{font-size:26px}
+.lab small{color:var(--mute);display:block;margin-top:6px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+label{font-size:14px;font-weight:700;display:block}
+input{width:100%;font:inherit;padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);margin-top:5px}
+.out{background:var(--ink);color:var(--bg);display:flex;flex-direction:column;justify-content:center;gap:12px}
+.verdict{font-family:"Bricolage Grotesque",sans-serif;font-size:30px;font-weight:800;line-height:1.1}
+.verdict.win{color:var(--sun)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:15px}.kv span:nth-child(odd){opacity:.7}
+.note{font-size:13.5px;opacity:.8;border-top:1px solid rgba(255,255,255,.25);padding-top:10px}
+section{padding:54px 0 8px}
+section>.wrap>h2{font-size:clamp(28px,4vw,42px);margin-bottom:8px}
+.sub{color:var(--mute);max-width:62ch;margin:0 0 26px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden}
+.stat{padding:18px;border-right:1px solid var(--line)}
+.stat b{font:800 34px/1 "Bricolage Grotesque",sans-serif;color:var(--blue);display:block}
+.stat span{font-size:14px;color:var(--mute)}
+table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.tw{overflow-x:auto;border-radius:14px}
+th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top;font-size:15.5px}
+th{font-family:"Bricolage Grotesque",sans-serif;font-size:16px}
+td:first-child{font-weight:700;min-width:190px}
+.case{display:grid;grid-template-columns:230px 1fr;gap:28px;padding:30px 0;border-top:2px solid var(--ink)}
+.case h3{font-size:28px}
+.case .meta{color:var(--mute);font-size:15px;margin-top:6px}
+.case h4{margin:0 0 4px;font-size:15px;font-weight:700;color:var(--blue)}
+.case p{margin:0 0 14px}
+.res{display:flex;flex-wrap:wrap;gap:10px}
+.res span{background:var(--sun);color:#0d1b3d;font-weight:700;padding:5px 12px;border-radius:8px;font-size:14.5px}
+.pb{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0;border:1px solid var(--line);background:var(--surface)}
+.pb div{padding:20px;border:1px solid var(--line);margin:-.5px}
+.pb h3{font-size:19px;margin-bottom:6px}.pb p{margin:0;font-size:15.5px;color:var(--mute)}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px 36px}
+.skills h3{font-size:18px;margin-bottom:4px}.skills p{margin:0;color:var(--mute);font-size:15.5px}
+.contact{margin:60px 0 0;background:var(--blue);color:var(--blue-ink);padding:48px 0}
+.contact h2{font-size:clamp(30px,5vw,52px);max-width:18ch}
+.contact a{color:inherit;font-weight:700}
+footer{padding:20px 0 30px;color:var(--mute);font-size:14px}
+@media(max-width:780px){.lab{grid-template-columns:1fr}.case{grid-template-columns:1fr;gap:12px}.stat{border-bottom:1px solid var(--line)}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><b>D. Chukka</b><a href="#lab">Test lab</a><a href="#fit">Role fit</a><a href="#work">Case studies</a><a href="#method">Method</a><a href="#stack">Stack</a><a href="#contact">Contact</a></div></nav>
+
+<header class="hero"><div class="wrap">
+<h1>I turn vague product questions into decisions you can ship.</h1>
+<p class="lead">Data scientist in experimentation and customer analytics across retail and telecom. I design A/B tests, hold the line on statistics, and explain the result to people who just want to know what to build next.</p>
+<div class="chips"><span class="chip">A/B experimentation</span><span class="chip">SQL and Python</span><span class="chip">Databricks and Snowflake</span><span class="chip">Product analytics</span><span class="chip">AI-assisted workflows</span></div>
+
+<div class="lab" id="lab">
+<div>
+<h2>Try the way I read an experiment</h2>
+<small>Enter results from a two-arm conversion test. It runs a two-proportion z-test, then tells you whether you have the sample to trust it.</small>
+<div class="fields">
+<label>Control conversion (%)<input id="p1" type="number" step="0.01" value="4.00" inputmode="decimal"></label>
+<label>Variant conversion (%)<input id="p2" type="number" step="0.01" value="4.35" inputmode="decimal"></label>
+<label>Users per arm<input id="n" type="number" step="100" value="40000" inputmode="numeric"></label>
+<label>Power target (%)<input id="pw" type="number" step="1" value="80" inputmode="numeric"></label>
+</div>
+</div>
+<div class="out" aria-live="polite">
+<div class="verdict" id="v">-</div>
+<div class="kv" id="kv"></div>
+<div class="note" id="nt"></div>
+</div>
+</div>
+</div></header>
+
+<section><div class="wrap">
+<div class="stats">
+<div class="stat"><b>+12%</b><span>customer engagement lift from tested recommendation and pricing initiatives</span></div>
+<div class="stat"><b>15M+</b><span>records a month through SQL pipelines for scoring and analysis</span></div>
+<div class="stat"><b>7d to &lt;24h</b><span>analytics processing time after the Snowflake and Databricks migration</span></div>
+<div class="stat"><b>20M+</b><span>records modeled and extracted in production work</span></div>
+</div>
+</div></section>
+
+<section id="fit"><div class="wrap">
+<h2>Mapped to the Beast Industries Data Scientist role</h2>
+<p class="sub">Each requirement in the posting, next to work I have already done.</p>
+<div class="tw"><table>
+<tr><th>What you asked for</th><th>Evidence from my work</th></tr>
+<tr><td>Own A/B experiments end to end</td><td>At Walmart I took recommendation and pricing questions from product managers, designed the experiments, analyzed results, and recommended which initiatives to scale.</td></tr>
+<tr><td>Frame ambiguous product questions</td><td>Turned open-ended recommendation and pricing questions into testable hypotheses and success metrics. At Phoenix Global I defined success metrics with cross-functional teams before any modeling began.</td></tr>
+<tr><td>Communicate to product and engineering</td><td>Presented assumptions, risks, and limitations to senior stakeholders. Built executive dashboards and KPI scorecards at Verizon that improved decision-making efficiency by 25%.</td></tr>
+<tr><td>Build tooling that makes analysis repeatable</td><td>Reproducible feature pipelines, MLflow tracking, data quality monitoring and drift detection (30% fewer degradation incidents), and automated dashboard refreshes (50% faster reporting).</td></tr>
+<tr><td>Strong SQL and Python</td><td>SQL transformation pipelines on 15M+ monthly records. Python, Pandas, NumPy, XGBoost, scikit-learn, and Spark across three roles.</td></tr>
+<tr><td>Cloud data stack</td><td>Snowflake, Databricks, AWS, Spark, PostgreSQL. Led a migration that cut processing latency from 7 days to under 24 hours.</td></tr>
+<tr><td>AI-native workflow</td><td>Generative AI and LLM applications on my skills list, NLP entity extraction on 20M+ records, and AI-assisted exploration and delivery as part of my daily workflow.</td></tr>
+<tr><td>Consumer, e-commerce, fast-moving teams</td><td>Retail and e-commerce experimentation at Walmart scale, customer analytics at Verizon, working alongside product and engineering teams throughout.</td></tr>
+</table></div>
+</div></section>
+
+<section id="work"><div class="wrap">
+<h2>Case studies</h2>
+<p class="sub">Three roles, one thread: start from the decision, then work back to the data.</p>
+
+<article class="case"><div><h3>Recommendation and pricing experiments</h3><div class="meta">Walmart, Data Science Associate<br>July 2026 to present</div></div>
+<div>
+<h4>The question</h4><p>Which recommendation and pricing strategies actually improve customer engagement, and which only look good in a dashboard?</p>
+<h4>What I did</h4><p>Partnered with product managers to turn the questions into A/B experiments. Designed and ran the testing framework, analyzed results, and stated assumptions, risks, and limitations to senior stakeholders before anyone acted on a number. Built SQL pipelines over 15M+ monthly records for feature generation and scoring, plus dashboards on demand trends and revenue impact.</p>
+<h4>Outcome</h4><div class="res"><span>+12% engagement across tested initiatives</span><span>15M+ records per month</span></div>
+</div></article>
+
+<article class="case"><div><h3>Customer behavior and risk analytics platform</h3><div class="meta">Verizon, Data Scientist<br>Aug 2024 to June 2025</div></div>
+<div>
+<h4>The question</h4><p>How do we find high-risk customers and locations sooner, and make the whole analysis reproducible instead of a one-off?</p>
+<h4>What I did</h4><p>Migrated analytics to Snowflake and Databricks. Built reproducible feature pipelines from geographic, demographic, and behavioral variables. Trained XGBoost models on 20M+ records and used SHAP to explain risk drivers to non-technical leaders. Added MLflow tracking, Spark and Docker optimization, and drift detection.</p>
+<h4>Outcome</h4><div class="res"><span>7 days to under 24 hours</span><span>+18% vs baseline</span><span>+22% risk identification accuracy</span><span>40% faster model runs</span><span>30% fewer degradation incidents</span></div>
+</div></article>
+
+<article class="case"><div><h3>Customer segmentation and market opportunity</h3><div class="meta">Phoenix Global, Data Scientist<br>May 2022 to Feb 2024</div></div>
+<div>
+<h4>The question</h4><p>Where are our customers across 10+ international markets, and can we trust the location data that answer depends on?</p>
+<h4>What I did</h4><p>Clustered customers into regional behavior segments. Defined success metrics and ran statistical validation with cross-functional teams. Traced inconsistencies to their root cause, standardized geospatial data, built NLP entity extraction on 20M+ records, and automated Tableau refreshes.</p>
+<h4>Outcome</h4><div class="res"><span>35% better data consistency</span><span>30% less manual effort</span><span>50% faster reporting</span></div>
+</div></article>
+</div></section>
+
+<section id="method"><div class="wrap">
+<h2>How I run an experiment</h2>
+<p class="sub">The checks I apply before I let a result influence what ships.</p>
+<div class="pb">
+<div><h3>Frame the decision first</h3><p>Write down what we will do if the test wins, loses, or is flat. One primary metric, named guardrails, and a minimum effect worth acting on.</p></div>
+<div><h3>Size it before launch</h3><p>Compute the sample needed for the effect that matters, so a test is never stopped early because it "looks good". Try it in the lab above.</p></div>
+<div><h3>Check the plumbing</h3><p>Sample ratio mismatch, logging gaps, novelty effects, and unit-of-randomization problems get checked before anyone reads the lift.</p></div>
+<div><h3>Control the error rate</h3><p>No peeking without a sequential method. Correct for multiple metrics and segments. Variance reduction such as CUPED when pre-period data exists.</p></div>
+<div><h3>Report the range, not the point</h3><p>Lead with the confidence interval and business impact, then the risks and limitations. Stakeholders get a recommendation, not a p-value.</p></div>
+<div><h3>Make it repeatable</h3><p>Analysis lives in versioned code and pipelines with data quality checks, so the next test takes hours instead of weeks.</p></div>
+</div>
+</div></section>
+
+<section id="stack"><div class="wrap">
+<h2>Toolkit</h2>
+<p class="sub">&nbsp;</p>
+<div class="skills">
+<div><h3>Programming and analysis</h3><p>SQL, Python, Pandas, NumPy, Jupyter, GitHub</p></div>
+<div><h3>Experimentation and statistics</h3><p>A/B testing, experimental design, hypothesis testing, statistical modeling and validation</p></div>
+<div><h3>Product analytics</h3><p>Customer behavior and engagement, recommendation evaluation, segmentation, KPI analysis, EDA</p></div>
+<div><h3>Predictive modeling</h3><p>Classification, regression, clustering, forecasting, XGBoost, scikit-learn</p></div>
+<div><h3>Cloud data</h3><p>Databricks, Snowflake, AWS, Spark, PostgreSQL, data pipelines</p></div>
+<div><h3>AI and automation</h3><p>Generative AI, LLM applications, workflow automation, feature engineering, MLflow</p></div>
+<div><h3>Insight delivery</h3><p>Tableau, Power BI, executive dashboards, SHAP explainability, model and data quality monitoring</p></div>
+<div><h3>Education</h3><p>M.S. Data Science, University of Texas at Arlington (2026)<br>B.Tech Computer Science, GITAM University (2024)</p></div>
+</div>
+</div></section>
+
+<div class="contact" id="contact"><div class="wrap">
+<h2>Let's find out what your next release should be.</h2>
+<p>Email <a href="mailto:cchukka25@gmail.com">cchukka25@gmail.com</a>. Based in Arlington, TX, open to the hybrid San Mateo, CA role.</p>
+</div></div>
+<footer><div class="wrap">The test lab is a teaching demo using the standard two-proportion z-test; it does not use any employer data.</div></footer>
+
+<script>
+(function(){
+function cdf(z){var t=1/(1+0.2316419*Math.abs(z)),d=0.3989423*Math.exp(-z*z/2),p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));return z>0?1-p:p}
+function zq(p){var lo=-8,hi=8,m;for(var i=0;i<60;i++){m=(lo+hi)/2;if(cdf(m)<p)lo=m;else hi=m}return m}
+var $=function(i){return document.getElementById(i)};
+function run(){
+var p1=parseFloat($('p1').value)/100,p2=parseFloat($('p2').value)/100,n=parseFloat($('n').value),pw=parseFloat($('pw').value)/100;
+if(!(p1>0&&p1<1&&p2>0&&p2<1&&n>1&&pw>0.5&&pw<1)){$('v').textContent='Check your inputs';$('v').className='verdict';$('kv').innerHTML='';$('nt').textContent='Rates must be between 0 and 100, users above 1, power between 50 and 99.';return}
+var pp=(p1+p2)/2,se=Math.sqrt(2*pp*(1-pp)/n),z=(p2-p1)/se,p=2*(1-cdf(Math.abs(z)));
+var se2=Math.sqrt(p1*(1-p1)/n+p2*(1-p2)/n),d=p2-p1,lo=d-1.96*se2,hi=d+1.96*se2;
+var za=zq(0.975),zb=zq(pw),need=Math.ceil(Math.pow(za+zb,2)*(p1*(1-p1)+p2*(1-p2))/(d*d));
+var sig=p<0.05,v=$('v');
+v.textContent=sig?(d>0?'Variant wins':'Variant loses'):'Not enough evidence';v.className='verdict'+(sig&&d>0?' win':'');
+var f=function(x){return (x*100).toFixed(2)};
+$('kv').innerHTML='<span>Absolute lift</span><span>'+(d>=0?'+':'')+f(d)+' pts ('+(d/p1*100).toFixed(1)+'% relative)</span><span>95% interval</span><span>'+f(lo)+' to '+f(hi)+' pts</span><span>p-value</span><span>'+(p<0.0001?'&lt; 0.0001':p.toFixed(4))+'</span><span>Needed per arm</span><span>'+(isFinite(need)?need.toLocaleString():'n/a')+' for '+Math.round(pw*100)+'% power</span>';
+$('nt').textContent=n<need?'Underpowered: you have '+n.toLocaleString()+' per arm and need about '+need.toLocaleString()+' to detect this lift reliably. Do not ship or kill on this alone.':(sig?'Powered for this effect. Next: check guardrail metrics and sample ratio before shipping.':'Powered for this effect, and no lift detected. Safe to stop and move on.');
+}
+['p1','p2','n','pw'].forEach(function(i){$(i).addEventListener('input',run)});run();
+})();
+</script>
+</body>
+</html>
